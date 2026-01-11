@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - UniPack</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cyber-dark': '#0A0E27',      
+                        'cyber-darker': '#151935',    
+                        'cyber-cyan': '#00F0FF',      
+                        'cyber-pink': '#FF006E',      
+                        'cyber-green': '#39FF14',     
+                        'cyber-text': '#F0F0F0',      
+                        'cyber-muted': '#9CA3AF',     
+                    },
+                    boxShadow: {
+                        'cyber-cyan': '0 0 20px rgba(0, 240, 255, 0.4)',
+                        'cyber-pink': '0 0 20px rgba(255, 0, 110, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-cyber-dark min-h-screen">
+    <!-- Header -->
+    <header class="bg-cyber-darker/80 backdrop-blur-lg shadow-lg sticky top-0 z-50 border-b border-cyber-cyan/30">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="w-20 h-10 bg-gradient-to-r from-cyber-cyan to-cyber-pink rounded-full flex items-center justify-center text-cyber-dark font-bold shadow-cyber-cyan hover:shadow-cyber-pink transition-all">
+                UniPack
+            </a>
+            <nav class="flex items-center gap-6">
+                <a href="index.html" class="text-cyber-text hover:text-cyber-cyan transition-colors">
+                    <i class="fas fa-home mr-2"></i>Home
+                </a>
+                <a href="login.html" class="text-cyber-muted hover:text-cyber-pink transition-colors">
+                    <span class="text-cyber-pink font-semibold">Log In</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Sign Up Section -->
+        <section class="py-16 relative overflow-hidden">
+            <!-- Animated background -->
+            <div class="absolute inset-0 opacity-20">
+                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyber-cyan rounded-full blur-3xl animate-pulse"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyber-pink rounded-full blur-3xl animate-pulse"></div>
+            </div>
+
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="max-w-2xl mx-auto">
+                    <!-- Header -->
+                    <div class="text-center mb-8">
+                        <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-cyber-cyan to-cyber-pink bg-clip-text text-transparent">
+                            Join UniPack
+                        </h1>
+                        <p class="text-cyber-muted text-lg">
+                            Create your account and start organizing your student life like a pro! 🚀
+                        </p>
+                    </div>
+
+                    <!-- Sign Up Form Card -->
+                    <div class="bg-cyber-darker/60 backdrop-blur-lg border border-cyber-cyan/30 rounded-2xl p-8 shadow-cyber-cyan">
+                        <form class="space-y-6">
+                            <!-- Personal Information -->
+                            <div class="border-b border-cyber-cyan/20 pb-6">
+                                <h2 class="text-2xl font-semibold text-cyber-cyan mb-4">
+                                    <i class="fas fa-user mr-2"></i>Personal Information
+                                </h2>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-cyber-text mb-2">First Name *</label>
+                                        <input type="text" required placeholder="John" 
+                                               class="w-full px-4 py-3 bg-cyber-dark border border-cyber-cyan/30 rounded-lg text-cyber-text placeholder-cyber-muted focus:outline-none focus:border-cyber-cyan focus:shadow-cyber-cyan transition-all">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-cyber-text mb-2">Last Name *</label>
+                                        <input type="text" required placeholder="Doe" 
+                                               class="w-full px-4 py-3 bg-cyber-dark border border-cyber-cyan/30 rounded-lg text-cyber-text placeholder-cyber-muted focus:outline-none focus:border-cyber-cyan focus:shadow-cyber-cyan transition-all">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Academic Information -->
+                            <div class="border-b border-cyber-pink/20 pb-6">
+                                <h2 class="text-2xl font-semibold text-cyber-pink mb-4">
+                                    <i class="fas fa-graduation-cap mr-2"></i>Academic Information
+                                </h2>
+
+                                <div class="space-y-4">
+                                    <div>
+                                        <label class="block text-cyber-text mb-2">Institutional Email *</label>
+                                        <input type="email" required placeholder="student@university.edu" 
+                                               class="w-full px-4 py-3 bg-cyber-dark border border-cyber-pink/30 rounded-lg text-cyber-text placeholder-cyber-muted focus:outline-none focus:border-cyber-pink focus:shadow-cyber-pink transition-all">
+                                        <p class="text-cyber-muted text-sm mt-1">
+                                            <i class="fas fa-info-circle"></i> Use your university email address
+                                        </p>
+                                    </div>
+
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-cyber-text mb-2">University *</label>
+                                            <input type="text" required placeholder="University of IT&C" 
+                                                   class="w-full px-4 py-3 bg-cyber-dark border border-cyber-pink/30 rounded-lg text-cyber-text placeholder-cyber-muted focus:outline-none focus:border-cyber-pink focus:shadow-cyber-pink transition-all">
+                                        </div>
+
+                                        <div>
+                                            <label class="block text-cyber-text mb-2">Year of Study *</label>
+                                            <select required class="w-full px-4 py-3 bg-cyber-dark border border-cyber-pink/30 rounded-lg text-cyber-text focus:outline-none focus:border-cyber-pink focus:shadow-cyber-pink transition-all">
+                                                <option value="">Select Year</option>
+                                                <option value="1">Year 1</option>
+                                                <option value="2">Year 2</option>
+                                                <option value="3">Year 3</option>
+                                                <option value="4">Year 4</option>
+                                                <option value="masters">Master's</option>
+                                                <option value="phd">PhD</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-cyber-text mb-2">Field of Study *</label>
+                                        <input type="text" required placeholder="Computer Science, Software Engineering, etc." 
+                                               class="w-full px-4 py-3 bg-cyber-dark border border-cyber-pink/30 rounded-lg text-cyber-text placeholder-cyber-muted focus:outline-none focus:border-cyber-pink focus:shadow-cyber-pink transition-all">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Account Security -->
+                            <div class="border-b border-cyber-cyan/20 pb-6">
+                                <h2 class="text-2xl font-semibold text-cyber-cyan mb-4">
+                                    <i class="fas fa-lock mr-2"></i>Account Security
+                                </h2>
+
+                                <div class="space-y-4">
+                                    <div>
+                                        <label class="block text-cyber-text mb-2">Username *</label>
+                                        <input type="text" required placeholder="Choose a unique username" 
+                                               class="w-full px-4 py-3 bg-cyber-dark border border-cyber-cyan/30 rounded-lg text-cyber-text placeholder-cyber-muted focus:outline-none focus:border-cyber-cyan focus:shadow-cyber-cyan transition-all">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-cyber-text mb-2">Password *</label>
+                                        <div class="relative">
+                                            <input type="password" id="password" required placeholder="Create a strong password" 
+                                                   class="w-full px-4 py-3 bg-cyber-dark border border-cyber-cyan/30 rounded-lg text-cyber-text placeholder-cyber-muted focus:outline-none focus:border-cyber-cyan focus:shadow-cyber-cyan transition-all">
+                                            <button type="button" onclick="togglePassword('password')" class="absolute right-3 top-1/2 -translate-y-1/2 text-cyber-muted hover:text-cyber-cyan transition-colors">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </div>
+                                        <div class="mt-2 space-y-1">
+                                            <p class="text-cyber-muted text-xs flex items-center gap-2">
+                                                <i class="fas fa-check-circle text-cyber-green"></i> At least 8 characters
+                                            </p>
+                                            <p class="text-cyber-muted text-xs flex items-center gap-2">
+                                                <i class="fas fa-check-circle text-cyber-green"></i> Include uppercase & lowercase
+                                            </p>
+                                            <p class="text-cyber-muted text-xs flex items-center gap-2">
+                                                <i class="fas fa-check-circle text-cyber-green"></i> Include numbers & symbols
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-cyber-text mb-2">Confirm Password *</label>
+                                        <div class="relative">
+                                            <input type="password" id="confirmPassword" required placeholder="Re-enter your password" 
+                                                   class="w-full px-4 py-3 bg-cyber-dark border border-cyber-cyan/30 rounded-lg text-cyber-text placeholder-cyber-muted focus:outline-none focus:border-cyber-cyan focus:shadow-cyber-cyan transition-all">
+                                            <button type="button" onclick="togglePassword('confirmPassword')" class="absolute right-3 top-1/2 -translate-y-1/2 text-cyber-muted hover:text-cyber-cyan transition-colors">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Preferences (Optional) -->
+                            <div class="pb-6">
+                                <h2 class="text-2xl font-semibold text-cyber-pink mb-4">
+                                    <i class="fas fa-palette mr-2"></i>Preferences (Optional)
+                                </h2>
+
+                                <div class="space-y-4">
+                                    <div>
+                                        <label class="block text-cyber-text mb-2">Profile Picture</label>
+                                        <div class="flex items-center gap-4">
+                                            <div class="w-20 h-20 bg-cyber-dark border-2 border-cyber-pink/30 rounded-full flex items-center justify-center text-cyber-pink text-2xl">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                            <label class="cursor-pointer bg-cyber-pink/20 hover:bg-cyber-pink/30 border border-cyber-pink/50 text-cyber-pink px-4 py-2 rounded-lg transition-all">
+                                                <i class="fas fa-upload mr-2"></i>Upload Photo
+                                                <input type="file" accept="image/*" class="hidden">
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-cyber-text mb-2">Receive Email Notifications</label>
+                                        <div class="flex items-center gap-3">
+                                            <input type="checkbox" id="notifications" class="w-5 h-5 rounded focus:ring-cyber-cyan">
+                                            <label for="notifications" class="text-cyber-muted">
+                                                Get reminders about deadlines and upcoming events
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Terms & Conditions -->
+                            <div class="flex items-start gap-3 bg-cyber-dark/50 p-4 rounded-lg border border-cyber-cyan/20">
+                                <input type="checkbox" required id="terms" class="w-5 h-5 rounded focus:ring-cyber-cyan mt-1 flex-shrink-0">
+                                <label for="terms" class="text-cyber-muted text-sm">
+                                    I agree to the <a href="#" class="text-cyber-cyan hover:text-cyber-pink transition-colors">Terms of Service</a> and 
+                                    <a href="#" class="text-cyber-cyan hover:text-cyber-pink transition-colors">Privacy Policy</a>. 
+                                    I understand that my data will be stored securely and used only to provide UniPack services.
+                                </label>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="w-full bg-gradient-to-r from-cyber-cyan to-blue-500 text-cyber-dark font-bold text-lg py-4 rounded-lg hover:shadow-cyber-cyan transition-all duration-300 transform hover:-translate-y-1">
+                                <i class="fas fa-rocket mr-2"></i>Create My Account
+                            </button>
+
+                            <!-- Alternative Sign Up Options -->
+                            <div class="relative my-6">
+                                <div class="absolute inset-0 flex items-center">
+                                    <div class="w-full border-t border-cyber-cyan/20"></div>
+                                </div>
+                                <div class="relative flex justify-center text-sm">
+                                    <span class="px-4 bg-cyber-darker text-cyber-muted">Or sign up with</span>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <button type="button" class="flex items-center justify-center gap-3 bg-cyber-dark border border-cyber-cyan/30 text-cyber-text px-4 py-3 rounded-lg hover:border-cyber-cyan hover:shadow-cyber-cyan transition-all">
+                                    <i class="fab fa-google text-xl"></i>
+                                    Google
+                                </button>
+                                <button type="button" class="flex items-center justify-center gap-3 bg-cyber-dark border border-cyber-pink/30 text-cyber-text px-4 py-3 rounded-lg hover:border-cyber-pink hover:shadow-cyber-pink transition-all">
+                                    <i class="fab fa-github text-xl"></i>
+                                    GitHub
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Already have account -->
+                    <div class="mt-6 text-center">
+                        <p class="text-cyber-muted">
+                            Already part of the community? 
+                            <a href="login.html" class="text-cyber-cyan hover:text-cyber-pink transition-colors font-semibold">
+                                Log In <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-cyber-dark border-t border-cyber-cyan/30 text-cyber-text py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-cyber-muted text-sm">&copy; 2026 UniPack by LunosCode. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle password visibility
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = event.target;
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        // Form validation on submit
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match! Please try again.');
+                return;
+            }
+            
+            // Success message
+            alert('🎉 Account created successfully! Welcome to UniPack!');
+            // In real app: window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+</html>

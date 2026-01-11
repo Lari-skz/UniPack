@@ -32,23 +32,39 @@
 
 <body class="bg-cyber-dark">
     <!-- Header -->
-    <header class="bg-cyber-darker/80 backdrop-blur-lg shadow-lg sticky top-0 z-10 border-b border-cyber-cyan/30">
+    <header class="bg-cyber-darker/80 backdrop-blur-lg shadow-lg sticky top-0 z-50 border-b border-cyber-cyan/30">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="w-20 h-10 bg-gradient-to-r from-cyber-cyan to-cyber-pink rounded-full flex items-center justify-center text-cyber-dark font-bold shadow-cyber-cyan">
                 UniPack
             </div>
-            <nav>
+            <nav class="flex items-center gap-6">
                 <ul class="flex space-x-6">
                     <li><a href="#home" class="text-cyber-text hover:text-cyber-cyan transition-colors">Home</a></li>
                     <li><a href="#about" class="text-cyber-text hover:text-cyber-cyan transition-colors">About</a></li>
-                     <li><a href="#contact" class="text-cyber-text hover:text-cyber-cyan transition-colors">Contact</a></li>
-                <li>                
-                <div class="date">
-                <div class="text-cyber-text hover:text-cyber-cyan transition-colors" id="currentDate"></div>
-               </div>
-                </li>
+                    <li><a href="#contact" class="text-cyber-text hover:text-cyber-cyan transition-colors">Contact</a></li>
+                    <li>                
+                        <div class="date">
+                            <div class="text-cyber-text hover:text-cyber-cyan transition-colors" id="currentDate"></div>
+                        </div>
+                    </li>
                 </ul>
 
+                <!-- Menu Button (Hamburger) -->
+                <div class="relative">
+                    <button id="menuButton" class="text-cyber-cyan hover:text-cyber-pink transition-colors text-2xl focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <div id="dropdownMenu" class="hidden absolute right-0 mt-4 w-48 bg-cyber-darker/95 backdrop-blur-lg border border-cyber-cyan/30 rounded-lg shadow-cyber-cyan overflow-hidden">
+                        <a href="signUp.html" class="block px-6 py-3 text-cyber-text hover:bg-cyber-cyan/20 hover:text-cyber-cyan transition-all border-b border-cyber-cyan/20">
+                            <i class="fas fa-user-plus mr-2"></i>Sign Up
+                        </a>
+                        <a href="login.html" class="block px-6 py-3 text-cyber-text hover:bg-cyber-pink/20 hover:text-cyber-pink transition-all">
+                            <i class="fas fa-sign-in-alt mr-2"></i>Log In
+                        </a>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
@@ -100,7 +116,7 @@
                     </div>
                     <div class="lg:w-1/2">
                         <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c3R1ZGVudHN8ZW58MHx8MHx8fDA%3D" 
-                             alt="Coffee shop" class="rounded-lg w-full border-2 border-cyber-cyan/30 shadow-cyber-cyan hover:border-cyber-cyan transition-all">
+                             alt="Students" class="rounded-lg w-full border-2 border-cyber-cyan/30 shadow-cyber-cyan hover:border-cyber-cyan transition-all">
                     </div>
                 </div>
             </div>
@@ -115,7 +131,7 @@
                     <!-- Service Cards -->
                     <div class="bg-cyber-darker/60 backdrop-blur-lg border border-cyber-cyan/30 rounded-lg p-6 hover:border-cyber-cyan hover:shadow-cyber-cyan transition-all duration-300 hover:-translate-y-2">
                         <div class="text-cyber-cyan text-3xl mb-4">
-                            <i class="fas fa-shield-alt"></i>
+                            <i class="fas fa-calendar-alt"></i>
                         </div>
                         <h3 class="text-xl font-semibold text-cyber-cyan mb-3">Calendar</h3>
                         <p class="text-cyber-muted">Time management can be pretty tricky even for students, we have projects, deadlines and sometimes we just loose track of time.</p>
@@ -123,7 +139,7 @@
 
                     <div class="bg-cyber-darker/60 backdrop-blur-lg border border-cyber-pink/30 rounded-lg p-6 hover:border-cyber-pink hover:shadow-cyber-pink transition-all duration-300 hover:-translate-y-2">
                         <div class="text-cyber-pink text-3xl mb-4">
-                            <i class="fas fa-coffee"></i>
+                            <i class="fas fa-list-check"></i>
                         </div>
                         <h3 class="text-xl font-semibold text-cyber-pink mb-3">To do list</h3>
                         <p class="text-cyber-muted">Break your problem into smaller problems, like divide et impera, you solve each small piece and when you put them all together, you solve the puzzle!</p>
@@ -139,7 +155,7 @@
 
                     <div class="bg-cyber-darker/60 backdrop-blur-lg border border-cyber-pink/30 rounded-lg p-6 hover:border-cyber-pink hover:shadow-cyber-pink transition-all duration-300 hover:-translate-y-2">
                         <div class="text-cyber-pink text-3xl mb-4">
-                            <i class="fas fa-glass-cheers"></i>
+                            <i class="fas fa-users"></i>
                         </div>
                         <h3 class="text-xl font-semibold text-cyber-pink mb-3">Community</h3>
                         <p class="text-cyber-muted">We think what's the most important is building communities, because together we are better!</p>
@@ -147,7 +163,7 @@
 
                     <div class="bg-cyber-darker/60 backdrop-blur-lg border border-cyber-cyan/30 rounded-lg p-6 hover:border-cyber-cyan hover:shadow-cyber-cyan transition-all duration-300 hover:-translate-y-2">
                         <div class="text-cyber-cyan text-3xl mb-4">
-                            <i class="fas fa-desk"></i>
+                            <i class="fas fa-chart-line"></i>
                         </div>
                         <h3 class="text-xl font-semibold text-cyber-cyan mb-3">Weekly Stats</h3>
                         <p class="text-cyber-muted">We like to believe it's important to reward consistence, so do your tasks and feel some well deserved validation!</p>
@@ -155,7 +171,7 @@
 
                     <div class="bg-cyber-darker/60 backdrop-blur-lg border border-cyber-pink/30 rounded-lg p-6 hover:border-cyber-pink hover:shadow-cyber-pink transition-all duration-300 hover:-translate-y-2">
                         <div class="text-cyber-pink text-3xl mb-4">
-                            <i class="fas fa-user-secret"></i>
+                            <i class="fas fa-sticky-note"></i>
                         </div>
                         <h3 class="text-xl font-semibold text-cyber-pink mb-3">Quick Notes</h3>
                         <p class="text-cyber-muted">Take quick notes whenever you need, why open the notes app and get lost in there when you can just use Unipack?</p>
@@ -223,7 +239,8 @@
             <p class="text-sm text-cyber-muted">&copy; 2025 LunosCode. All rights reserved.</p>
         </div>
     </footer>
-     <script>
+
+    <script>
         // Update date
         function updateDate() {
             const now = new Date();
@@ -234,6 +251,29 @@
 
         updateDate();
         setInterval(updateDate, 1000);
+
+        // Dropdown Menu Toggle
+        const menuButton = document.getElementById('menuButton');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        menuButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!menuButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.add('hidden');
+            }
+        });
+
+        // Close dropdown when clicking a link
+        dropdownMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                dropdownMenu.classList.add('hidden');
+            });
+        });
     </script>
 </body>
 </html>
