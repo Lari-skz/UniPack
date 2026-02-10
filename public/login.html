@@ -98,9 +98,9 @@
                             <input type="checkbox" id="remember" class="w-4 h-4 rounded">
                             Remember me
                         </label>
-                        <a href="#" class="text-cyber-cyan hover:text-cyber-pink transition-colors">
-                            Forgot password?
-                        </a>
+                        <a href="#" onclick="openForgotPasswordModal(event)" class="text-cyber-cyan hover:text-cyber-pink transition-colors">
+    Forgot password?
+</a>
                     </div>
 
                     <!-- Error Message (hidden by default) -->
@@ -159,6 +159,27 @@
         </div>
     </div>
 </section>
+<!-- Forgot Password Modal -->
+<div id="forgotPasswordModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div class="bg-cyber-darker border border-cyber-cyan/30 rounded-2xl p-8 max-w-md w-full mx-4">
+        <div class="flex items-center justify-between mb-6">
+            <h3 class="text-2xl font-bold text-cyber-text">Reset Password</h3>
+            <button onclick="closeForgotPasswordModal()" class="text-cyber-muted hover:text-cyber-text">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <p class="text-cyber-muted mb-4">
+            Password reset functionality is currently under development.
+        </p>
+        <div class="bg-blue-500/20 border border-blue-500 text-blue-400 px-4 py-3 rounded-lg text-sm mb-4">
+            <i class="fas fa-info-circle mr-2"></i>
+            <strong>For now:</strong> Please contact support@unipack.com or your system administrator for password assistance.
+        </div>
+        <button type="button" onclick="closeForgotPasswordModal()" class="w-full bg-gradient-to-r from-cyber-cyan to-blue-500 text-cyber-dark font-bold py-3 rounded-lg hover:shadow-lg transition-all">
+            Got it, Close
+        </button>
+    </div>
+</div>
 </main>
 
 <footer class="bg-cyber-dark border-t border-cyber-cyan/30 text-cyber-text py-8">
@@ -166,7 +187,23 @@
         <p class="text-cyber-muted text-sm">&copy; 2026 UniPack by LunosCode. All rights reserved.</p>
     </div>
 </footer>
+<script>
+function openForgotPasswordModal(event) {
+    event.preventDefault();
+    document.getElementById('forgotPasswordModal').classList.remove('hidden');
+}
 
+function closeForgotPasswordModal() {
+    document.getElementById('forgotPasswordModal').classList.add('hidden');
+}
+
+// Close modal when clicking outside
+document.getElementById('forgotPasswordModal')?.addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeForgotPasswordModal();
+    }
+});
+</script>
 <script src="/js/api.js"></script>
 <script src="/js/auth.js"></script>
 
