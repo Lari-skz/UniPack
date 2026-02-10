@@ -208,3 +208,42 @@ function redirectIfAuthenticated() {
         window.location.href = '/userDashboard.html';
     }
 }
+
+// Admin API calls
+const AdminAPI = {
+    async getStats() {
+        return apiRequest('/admin/stats', {
+            method: 'GET'
+        });
+    },
+
+    async listUsers() {
+        return apiRequest('/admin/users', {
+            method: 'GET'
+        });
+    },
+
+    async getUser(id) {
+        return apiRequest(`/admin/users/${id}`, {
+            method: 'GET'
+        });
+    },
+
+    async deleteUser(id) {
+        return apiRequest(`/admin/users/${id}`, {
+            method: 'DELETE'
+        });
+    },
+
+    async toggleAdminStatus(id) {
+        return apiRequest(`/admin/users/${id}/toggle-admin`, {
+            method: 'PATCH'
+        });
+    },
+
+    async getRecentActivity() {
+        return apiRequest('/admin/recent-activity', {
+            method: 'GET'
+        });
+    }
+};

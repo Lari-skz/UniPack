@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\TaskController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\EventController;
+use App\Http\Controllers\Api\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,21 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Event routes
     Route::apiResource('events', EventController::class);
+});
+
+// Admin routes (require authentication + admin role)
+Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function () {
+    // Dashboard statistics
+    Route::get('/stats', [AdminController::class, 'stats']);
+
+    // User management
+    Route::get('/users', [AdminController::class, 'listUsers']);
+    Route::get('/users/{id}', [AdminController::class, 'getUser']);
+    Route::delete('/users/{id}', [AdminController::class, 'deleteUser']);
+    Route::patch('/users/{id}/toggle-admin', [AdminController::class, 'toggleAdminStatus']);
+
+    // Recent activity
+    Route::get('/recent-activity', [AdminController::class, 'recentActivity']);
 });
 
 // Test route

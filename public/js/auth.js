@@ -33,19 +33,24 @@ function initializeLogin() {
         loginButton.disabled = true;
         loginButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Logging in...';
 
-        try {
-            const response = await AuthAPI.login(email, password);
+       try {
+    const response = await AuthAPI.login(email, password);
 
-            setAuthToken(response.data.token);
-            setUserData(response.data.user);
+    setAuthToken(response.data.token);
+    setUserData(response.data.user);
 
-            showSuccess('Login successful! Redirecting...');
+    showSuccess('Login successful! Redirecting...');
 
-            setTimeout(() => {
-                window.location.href = '/userDashboard.html';
-            }, 1000);
+    // Smart redirect based on user role
+    setTimeout(() => {
+        if (response.data.user.is_admin) {
+            window.location.href = '/adminDashboard.html';
+        } else {
+            window.location.href = '/userDashboard.html';
+        }
+    }, 1000);
 
-        } catch (error) {
+} catch (error) {
             let errorMessage = 'Login failed. Please try again.';
 
             if (error.status === 401) {

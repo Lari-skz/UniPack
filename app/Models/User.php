@@ -15,11 +15,13 @@ class User extends Authenticatable
     /**
      * Define which fields can be mass assigned
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+protected $fillable = [
+    'name',
+    'email',
+    'password',
+    'is_admin',
+];
+
 
     /**
      * Hide these fields when converting to JSON
@@ -33,10 +35,12 @@ class User extends Authenticatable
     /**
      * Define how attributes should be cast
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
+
+protected $casts = [
+    'email_verified_at' => 'datetime',
+    'password' => 'hashed',
+    'is_admin' => 'boolean',
+];
 
     /**
      * A user has many tasks
@@ -57,4 +61,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Event::class);
     }
+
+    /**
+ * Get the categories for the user.
+ */
+public function categories()
+{
+    return $this->hasMany(Category::class);
+}
 }
