@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - UniPack</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,392 +18,248 @@
                         'cyber-green': '#39FF14',
                         'cyber-text': '#F0F0F0',
                         'cyber-muted': '#9CA3AF',
-                    },
-                    boxShadow: {
-                        'cyber-cyan': '0 0 20px rgba(0, 240, 255, 0.4)',
-                        'cyber-pink': '0 0 20px rgba(255, 0, 110, 0.4)',
                     }
                 }
             }
         }
     </script>
 </head>
-
-<body class="bg-cyber-dark">
+<body class="bg-cyber-dark min-h-screen">
 
 <!-- Header -->
 <header class="bg-cyber-darker/80 backdrop-blur-lg shadow-lg sticky top-0 z-50 border-b border-cyber-cyan/30">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-        <div class="flex items-center gap-4">
-            <a href="index.html" class="w-20 h-10 bg-gradient-to-r from-cyber-cyan to-cyber-pink rounded-full flex items-center justify-center text-cyber-dark font-bold shadow-cyber-cyan hover:shadow-cyber-pink transition-all">
-                UniPack
-            </a>
-            <span class="text-cyber-text hidden md:block">Welcome, <span id="userName" class="text-cyber-cyan font-semibold">Student</span>!</span>
+        <div class="text-2xl font-bold bg-gradient-to-r from-cyber-cyan to-cyber-pink bg-clip-text text-transparent">
+            UniPack
         </div>
-
-        <div class="flex items-center gap-6">
-            <button id="logoutBtn" class="bg-gradient-to-r from-cyber-pink to-red-500 text-cyber-dark font-semibold px-6 py-2 rounded-lg hover:shadow-cyber-pink transition-all duration-300">
+        <div class="flex items-center gap-4">
+            <span class="text-cyber-text">Welcome, <span id="userName" class="text-cyber-cyan font-semibold"></span>!</span>
+            <button id="logoutBtn" class="bg-cyber-pink hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors">
                 <i class="fas fa-sign-out-alt mr-2"></i>Logout
             </button>
         </div>
     </div>
 </header>
 
-<main class="py-8">
-    <div class="container mx-auto px-4">
-        <!-- Welcome Section -->
-        <div class="mb-12">
-            <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-cyber-cyan to-cyber-pink bg-clip-text text-transparent">
-                Your Dashboard
-            </h1>
-            <p class="text-cyber-muted text-lg">Manage your tasks and events all in one place</p>
-        </div>
+<!-- Main Content -->
+<main class="container mx-auto px-4 py-8">
 
-        <!-- Main Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-            <!-- TO-DO LIST SECTION -->
-            <div class="bg-cyber-darker/60 backdrop-blur-lg border border-cyber-cyan/30 rounded-2xl p-8 shadow-cyber-cyan hover:border-cyber-cyan transition-all duration-300">
-                <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-3xl font-bold text-cyber-cyan">
-                        <i class="fas fa-list-check mr-3"></i>My Tasks
-                    </h2>
-                    <button id="addTaskBtn" class="bg-gradient-to-r from-cyber-cyan to-blue-500 text-cyber-dark font-semibold px-4 py-2 rounded-lg hover:shadow-cyber-cyan transition-all duration-300">
-                        <i class="fas fa-plus mr-2"></i>Add Task
-                    </button>
-                </div>
-
-                <!-- Tasks List -->
-                <div id="tasksList" class="space-y-3 max-h-96 overflow-y-auto">
-                    <!-- Tasks will be loaded here via API -->
-                    <div class="text-center py-8">
-                        <i class="fas fa-inbox text-cyber-muted text-4xl mb-4 block"></i>
-                        <p class="text-cyber-muted">No tasks yet. Create one to get started!</p>
-                    </div>
-                </div>
-
-                <!-- Task Stats -->
-                <div class="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-cyber-cyan/20">
-                    <div class="text-center">
-                        <p class="text-2xl font-bold text-cyber-green" id="completedCount">0</p>
-                        <p class="text-cyber-muted text-sm">Completed</p>
-                    </div>
-                    <div class="text-center">
-                        <p class="text-2xl font-bold text-cyber-pink" id="pendingCount">0</p>
-                        <p class="text-cyber-muted text-sm">Pending</p>
-                    </div>
-                    <div class="text-center">
-                        <p class="text-2xl font-bold text-cyber-cyan" id="totalCount">0</p>
-                        <p class="text-cyber-muted text-sm">Total</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CALENDAR SECTION -->
-            <div class="bg-cyber-darker/60 backdrop-blur-lg border border-cyber-pink/30 rounded-2xl p-8 shadow-cyber-pink hover:border-cyber-pink transition-all duration-300">
-                <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-3xl font-bold text-cyber-pink">
-                        <i class="fas fa-calendar-alt mr-3"></i>Calendar
-                    </h2>
-                    <button id="addEventBtn" class="bg-gradient-to-r from-cyber-pink to-red-500 text-cyber-dark font-semibold px-4 py-2 rounded-lg hover:shadow-cyber-pink transition-all duration-300">
-                        <i class="fas fa-plus mr-2"></i>Add Event
-                    </button>
-                </div>
-
-                <!-- Calendar Grid -->
-                <div class="mb-6">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 id="currentMonth" class="text-xl font-semibold text-cyber-text">February 2025</h3>
-                        <div class="flex gap-2">
-                            <button id="prevMonth" class="text-cyber-cyan hover:text-cyber-pink transition-colors px-3 py-2 rounded border border-cyber-cyan/30 hover:border-cyber-pink/30">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <button id="nextMonth" class="text-cyber-cyan hover:text-cyber-pink transition-colors px-3 py-2 rounded border border-cyber-cyan/30 hover:border-cyber-pink/30">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Calendar Days -->
-                    <div class="grid grid-cols-7 gap-2 mb-4">
-                        <div class="text-center text-cyber-muted text-sm font-semibold">Sun</div>
-                        <div class="text-center text-cyber-muted text-sm font-semibold">Mon</div>
-                        <div class="text-center text-cyber-muted text-sm font-semibold">Tue</div>
-                        <div class="text-center text-cyber-muted text-sm font-semibold">Wed</div>
-                        <div class="text-center text-cyber-muted text-sm font-semibold">Thu</div>
-                        <div class="text-center text-cyber-muted text-sm font-semibold">Fri</div>
-                        <div class="text-center text-cyber-muted text-sm font-semibold">Sat</div>
-                    </div>
-
-                    <div id="calendarGrid" class="grid grid-cols-7 gap-2">
-                        <!-- Calendar dates will be generated here -->
-                    </div>
-                </div>
-
-                <!-- Upcoming Events -->
-                <div class="pt-6 border-t border-cyber-pink/20">
-                    <h4 class="text-cyber-pink font-semibold mb-3">Upcoming Events</h4>
-                    <div id="eventsList" class="space-y-2 max-h-40 overflow-y-auto">
-                        <p class="text-cyber-muted text-sm">No events scheduled</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Quick Action Buttons -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-            <button id="viewTasksBtn" class="bg-gradient-to-r from-cyber-cyan to-blue-500 text-cyber-dark font-semibold py-4 px-6 rounded-lg hover:shadow-cyber-cyan transition-all duration-300 transform hover:-translate-y-1">
-                <i class="fas fa-tasks text-2xl mb-2 block"></i>View All Tasks
-            </button>
-            <button id="viewCalendarBtn" class="bg-gradient-to-r from-cyber-pink to-red-500 text-cyber-dark font-semibold py-4 px-6 rounded-lg hover:shadow-cyber-pink transition-all duration-300 transform hover:-translate-y-1">
-                <i class="fas fa-calendar text-2xl mb-2 block"></i>Full Calendar
-            </button>
-            <button id="viewCategoriesBtn" class="bg-gradient-to-r from-cyber-green to-lime-500 text-cyber-dark font-semibold py-4 px-6 rounded-lg hover:shadow-cyan transition-all duration-300 transform hover:-translate-y-1">
-                <i class="fas fa-tag text-2xl mb-2 block"></i>Manage Categories
-            </button>
-        </div>
-
+    <!-- Success/Error Messages -->
+    <div id="successMessage" class="hidden bg-green-500/20 border border-green-500 text-green-400 px-4 py-3 rounded-lg mb-4">
+        <i class="fas fa-check-circle mr-2"></i>
+        <span id="successText"></span>
     </div>
+
+    <div id="errorMessage" class="hidden bg-red-500/20 border border-red-500 text-red-400 px-4 py-3 rounded-lg mb-4">
+        <i class="fas fa-exclamation-circle mr-2"></i>
+        <span id="errorText"></span>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-cyber-darker border border-cyber-cyan/30 rounded-lg p-6">
+            <div class="text-cyber-muted mb-2">Total Tasks</div>
+            <div class="text-4xl font-bold text-cyber-cyan" id="totalTasks">0</div>
+        </div>
+        <div class="bg-cyber-darker border border-cyber-green/30 rounded-lg p-6">
+            <div class="text-cyber-muted mb-2">Completed</div>
+            <div class="text-4xl font-bold text-cyber-green" id="completedTasks">0</div>
+        </div>
+        <div class="bg-cyber-darker border border-cyber-pink/30 rounded-lg p-6">
+            <div class="text-cyber-muted mb-2">Pending</div>
+            <div class="text-4xl font-bold text-cyber-pink" id="pendingTasks">0</div>
+        </div>
+    </div>
+
+    <!-- Categories Section -->
+    <section class="mb-8">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-2xl font-bold text-cyber-text">
+                <i class="fas fa-tags mr-2"></i>Categories
+            </h2>
+            <button id="openCategoryModal" class="bg-gradient-to-r from-cyber-cyan to-blue-500 text-cyber-dark px-4 py-2 rounded-lg hover:shadow-lg transition-all">
+                <i class="fas fa-plus mr-2"></i>New Category
+            </button>
+        </div>
+        <div id="categoriesContainer" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Categories will be rendered here -->
+        </div>
+    </section>
+
+    <!-- Tasks Section -->
+    <section class="mb-8">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-2xl font-bold text-cyber-text">
+                <i class="fas fa-tasks mr-2"></i>Tasks
+            </h2>
+            <button id="openTaskModal" class="bg-gradient-to-r from-cyber-cyan to-blue-500 text-cyber-dark px-4 py-2 rounded-lg hover:shadow-lg transition-all">
+                <i class="fas fa-plus mr-2"></i>New Task
+            </button>
+        </div>
+        <div id="tasksContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Tasks will be rendered here -->
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="mb-8">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-2xl font-bold text-cyber-text">
+                <i class="fas fa-calendar-alt mr-2"></i>Events
+            </h2>
+            <button id="openEventModal" class="bg-gradient-to-r from-cyber-pink to-purple-500 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all">
+                <i class="fas fa-plus mr-2"></i>New Event
+            </button>
+        </div>
+        <div id="eventsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Events will be rendered here -->
+        </div>
+    </section>
+
 </main>
 
+<!-- Category Modal -->
+<div id="categoryModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div class="bg-cyber-darker border border-cyber-cyan/30 rounded-2xl p-8 max-w-md w-full mx-4">
+        <div class="flex items-center justify-between mb-6">
+            <h3 class="text-2xl font-bold text-cyber-text">New Category</h3>
+            <button id="closeCategoryModal" class="text-cyber-muted hover:text-cyber-text">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <form id="categoryForm" class="space-y-4">
+            <div>
+                <label class="block text-cyber-text mb-2">Name *</label>
+                <input type="text" id="categoryName" required
+                       placeholder="e.g., Study, Work, Personal"
+                       class="w-full px-4 py-3 bg-cyber-dark border border-cyber-cyan/30 rounded-lg text-cyber-text placeholder-cyber-muted focus:outline-none focus:border-cyber-cyan">
+            </div>
+            <div>
+                <label class="block text-cyber-text mb-2">Description</label>
+                <textarea id="categoryDescription"
+                          placeholder="Optional description"
+                          class="w-full px-4 py-3 bg-cyber-dark border border-cyber-cyan/30 rounded-lg text-cyber-text placeholder-cyber-muted focus:outline-none focus:border-cyber-cyan"
+                          rows="3"></textarea>
+            </div>
+            <div>
+                <label class="block text-cyber-text mb-2">Color</label>
+                <input type="color" id="categoryColor" value="#00F0FF"
+                       class="w-full h-12 px-2 bg-cyber-dark border border-cyber-cyan/30 rounded-lg cursor-pointer">
+            </div>
+            <button type="submit" class="w-full bg-gradient-to-r from-cyber-cyan to-blue-500 text-cyber-dark font-bold py-3 rounded-lg hover:shadow-lg transition-all">
+                <i class="fas fa-plus mr-2"></i>Create Category
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Task Modal -->
+<div id="taskModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div class="bg-cyber-darker border border-cyber-cyan/30 rounded-2xl p-8 max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto">
+        <div class="flex items-center justify-between mb-6">
+            <h3 class="text-2xl font-bold text-cyber-text">New Task</h3>
+            <button id="closeTaskModal" class="text-cyber-muted hover:text-cyber-text">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <form id="taskForm" class="space-y-4">
+            <div>
+                <label class="block text-cyber-text mb-2">Title *</label>
+                <input type="text" id="taskTitle" required
+                       placeholder="e.g., Complete project documentation"
+                       class="w-full px-4 py-3 bg-cyber-dark border border-cyber-cyan/30 rounded-lg text-cyber-text placeholder-cyber-muted focus:outline-none focus:border-cyber-cyan">
+            </div>
+            <div>
+                <label class="block text-cyber-text mb-2">Description</label>
+                <textarea id="taskDescription"
+                          placeholder="Task details (optional)"
+                          class="w-full px-4 py-3 bg-cyber-dark border border-cyber-cyan/30 rounded-lg text-cyber-text placeholder-cyber-muted focus:outline-none focus:border-cyber-cyan"
+                          rows="3"></textarea>
+            </div>
+            <div>
+                <label class="block text-cyber-text mb-2">Category</label>
+                <select id="taskCategory"
+                        class="w-full px-4 py-3 bg-cyber-dark border border-cyber-cyan/30 rounded-lg text-cyber-text focus:outline-none focus:border-cyber-cyan">
+                    <option value="">No Category</option>
+                    <!-- Categories will be populated here -->
+                </select>
+            </div>
+            <div>
+                <label class="block text-cyber-text mb-2">Due Date *</label>
+                <input type="date" id="taskDueDate" required
+                       class="w-full px-4 py-3 bg-cyber-dark border border-cyber-cyan/30 rounded-lg text-cyber-text focus:outline-none focus:border-cyber-cyan">
+            </div>
+            <div>
+                <label class="block text-cyber-text mb-2">Priority *</label>
+                <select id="taskPriority" required
+                        class="w-full px-4 py-3 bg-cyber-dark border border-cyber-cyan/30 rounded-lg text-cyber-text focus:outline-none focus:border-cyber-cyan">
+                    <option value="low">🟢 Low</option>
+                    <option value="medium" selected>🟡 Medium</option>
+                    <option value="high">🔴 High</option>
+                </select>
+            </div>
+            <button type="submit" class="w-full bg-gradient-to-r from-cyber-cyan to-blue-500 text-cyber-dark font-bold py-3 rounded-lg hover:shadow-lg transition-all">
+                <i class="fas fa-plus mr-2"></i>Create Task
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Event Modal -->
+<div id="eventModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div class="bg-cyber-darker border border-cyber-pink/30 rounded-2xl p-8 max-w-md w-full mx-4">
+        <div class="flex items-center justify-between mb-6">
+            <h3 class="text-2xl font-bold text-cyber-text">New Event</h3>
+            <button id="closeEventModal" class="text-cyber-muted hover:text-cyber-text">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <form id="eventForm" class="space-y-4">
+            <div>
+                <label class="block text-cyber-text mb-2">Title *</label>
+                <input type="text" id="eventTitle" required
+                       placeholder="e.g., Team Meeting, Exam, Birthday"
+                       class="w-full px-4 py-3 bg-cyber-dark border border-cyber-pink/30 rounded-lg text-cyber-text placeholder-cyber-muted focus:outline-none focus:border-cyber-pink">
+            </div>
+            <div>
+                <label class="block text-cyber-text mb-2">Description</label>
+                <textarea id="eventDescription"
+                          placeholder="Event details (optional)"
+                          class="w-full px-4 py-3 bg-cyber-dark border border-cyber-pink/30 rounded-lg text-cyber-text placeholder-cyber-muted focus:outline-none focus:border-cyber-pink"
+                          rows="3"></textarea>
+            </div>
+            <div>
+                <label class="block text-cyber-text mb-2">Date *</label>
+                <input type="date" id="eventDate" required
+                       class="w-full px-4 py-3 bg-cyber-dark border border-cyber-pink/30 rounded-lg text-cyber-text focus:outline-none focus:border-cyber-pink">
+            </div>
+            <div>
+                <label class="block text-cyber-text mb-2">Time *</label>
+                <input type="time" id="eventTime" required
+                       class="w-full px-4 py-3 bg-cyber-dark border border-cyber-pink/30 rounded-lg text-cyber-text focus:outline-none focus:border-cyber-pink">
+            </div>
+            <div>
+                <label class="block text-cyber-text mb-2">Color</label>
+                <input type="color" id="eventColor" value="#FF006E"
+                       class="w-full h-12 px-2 bg-cyber-dark border border-cyber-pink/30 rounded-lg cursor-pointer">
+            </div>
+            <button type="submit" class="w-full bg-gradient-to-r from-cyber-pink to-purple-500 text-white font-bold py-3 rounded-lg hover:shadow-lg transition-all">
+                <i class="fas fa-plus mr-2"></i>Create Event
+            </button>
+        </form>
+    </div>
+</div>
+
 <!-- Footer -->
-<footer class="bg-cyber-dark border-t border-cyber-cyan/30 text-cyber-text py-8 mt-16">
+<footer class="bg-cyber-dark border-t border-cyber-cyan/30 text-cyber-text py-8 mt-12">
     <div class="container mx-auto px-4 text-center">
         <p class="text-cyber-muted text-sm">&copy; 2026 UniPack by LunosCode. All rights reserved.</p>
     </div>
 </footer>
 
-<script>
-    // Check if user is authenticated
-    document.addEventListener('DOMContentLoaded', function() {
-        const token = localStorage.getItem('auth_token');
-        const userName = localStorage.getItem('user_name');
-
-        if (!token) {
-            // Redirect to login if not authenticated
-            window.location.href = 'login.html';
-            return;
-        }
-
-        // Set user name in header
-        if (userName) {
-            document.getElementById('userName').textContent = userName;
-        }
-
-        // Initialize dashboard
-        initializeDashboard();
-    });
-
-    function initializeDashboard() {
-        // Load tasks
-        loadTasks();
-
-        // Load events
-        loadEvents();
-
-        // Generate calendar
-        generateCalendar();
-
-        // Setup event listeners
-        setupEventListeners();
-    }
-
-    async function loadTasks() {
-        try {
-            const token = localStorage.getItem('auth_token');
-            const response = await fetch('/api/tasks', {
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Accept': 'application/json'
-                }
-            });
-
-            if (!response.ok) throw new Error('Failed to load tasks');
-
-            const data = await response.json();
-            const tasks = data.data || [];
-
-            const tasksList = document.getElementById('tasksList');
-
-            if (tasks.length === 0) {
-                tasksList.innerHTML = `
-                    <div class="text-center py-8">
-                        <i class="fas fa-inbox text-cyber-muted text-4xl mb-4 block"></i>
-                        <p class="text-cyber-muted">No tasks yet. Create one to get started!</p>
-                    </div>
-                `;
-                updateTaskStats([], tasks);
-                return;
-            }
-
-            tasksList.innerHTML = tasks.map(task => `
-                <div class="bg-cyber-dark/50 p-4 rounded-lg border border-cyber-cyan/20 hover:border-cyber-cyan/50 transition-all">
-                    <div class="flex items-start justify-between">
-                        <div class="flex-1">
-                            <h4 class="font-semibold text-cyber-text">${task.title}</h4>
-                            <p class="text-cyber-muted text-sm">${task.description || 'No description'}</p>
-                            <div class="flex gap-3 mt-2">
-                                <span class="text-xs px-2 py-1 rounded bg-cyber-cyan/20 text-cyber-cyan">
-                                    ${task.priority}
-                                </span>
-                                <span class="text-xs px-2 py-1 rounded bg-cyber-pink/20 text-cyber-pink">
-                                    ${task.status}
-                                </span>
-                                <span class="text-xs px-2 py-1 rounded bg-cyber-muted/20 text-cyber-muted">
-                                    ${task.due_date}
-                                </span>
-                            </div>
-                        </div>
-                        <button class="text-cyber-pink hover:text-red-500 transition-colors">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-
-            updateTaskStats(tasks, tasks);
-        } catch (error) {
-            console.error('Error loading tasks:', error);
-            document.getElementById('tasksList').innerHTML = `
-                <div class="text-center py-8">
-                    <p class="text-cyber-pink">Error loading tasks</p>
-                </div>
-            `;
-        }
-    }
-
-    async function loadEvents() {
-        try {
-            const token = localStorage.getItem('auth_token');
-            const response = await fetch('/api/events', {
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Accept': 'application/json'
-                }
-            });
-
-            if (!response.ok) throw new Error('Failed to load events');
-
-            const data = await response.json();
-            const events = data.data || [];
-
-            const eventsList = document.getElementById('eventsList');
-
-            if (events.length === 0) {
-                eventsList.innerHTML = '<p class="text-cyber-muted text-sm">No events scheduled</p>';
-                return;
-            }
-
-            eventsList.innerHTML = events.slice(0, 5).map(event => `
-                <div class="bg-cyber-dark/50 p-2 rounded text-sm border-l-4" style="border-color: ${event.color || '#FF006E'}">
-                    <p class="font-semibold text-cyber-text">${event.title}</p>
-                    <p class="text-cyber-muted text-xs">${event.event_date} at ${event.event_time}</p>
-                </div>
-            `).join('');
-        } catch (error) {
-            console.error('Error loading events:', error);
-        }
-    }
-
-    function updateTaskStats(completed, all) {
-        const completedCount = all.filter(t => t.status === 'completed').length;
-        const pendingCount = all.filter(t => t.status === 'pending').length;
-
-        document.getElementById('completedCount').textContent = completedCount;
-        document.getElementById('pendingCount').textContent = pendingCount;
-        document.getElementById('totalCount').textContent = all.length;
-    }
-
-    function generateCalendar() {
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = now.getMonth();
-
-        const firstDay = new Date(year, month, 1);
-        const lastDay = new Date(year, month + 1, 0);
-        const daysInMonth = lastDay.getDate();
-        const startingDayOfWeek = firstDay.getDay();
-
-        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
-                          'July', 'August', 'September', 'October', 'November', 'December'];
-
-        document.getElementById('currentMonth').textContent = `${monthNames[month]} ${year}`;
-
-        const calendarGrid = document.getElementById('calendarGrid');
-        calendarGrid.innerHTML = '';
-
-        // Empty cells for days before month starts
-        for (let i = 0; i < startingDayOfWeek; i++) {
-            calendarGrid.appendChild(document.createElement('div'));
-        }
-
-        // Days of month
-        for (let day = 1; day <= daysInMonth; day++) {
-            const dayCell = document.createElement('div');
-            const isToday = day === now.getDate() && month === now.getMonth() && year === now.getFullYear();
-
-            dayCell.className = `text-center py-2 rounded border transition-all cursor-pointer ${
-                isToday
-                    ? 'bg-cyber-cyan/30 border-cyber-cyan text-cyber-cyan font-bold'
-                    : 'border-cyber-cyan/20 text-cyber-text hover:border-cyber-cyan/50'
-            }`;
-            dayCell.textContent = day;
-            dayCell.onclick = () => selectDate(year, month + 1, day);
-
-            calendarGrid.appendChild(dayCell);
-        }
-    }
-
-    function selectDate(year, month, day) {
-        const dateStr = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-        alert(`Selected: ${dateStr}`);
-        // Here you would filter events/tasks by date
-    }
-
-    function setupEventListeners() {
-        // Logout button
-        document.getElementById('logoutBtn').addEventListener('click', function() {
-            localStorage.removeItem('auth_token');
-            localStorage.removeItem('user_name');
-            window.location.href = 'login.html';
-        });
-
-        // Add task button
-        document.getElementById('addTaskBtn').addEventListener('click', function() {
-            alert('Add Task feature - coming soon!');
-            // Will connect to API later
-        });
-
-        // Add event button
-        document.getElementById('addEventBtn').addEventListener('click', function() {
-            alert('Add Event feature - coming soon!');
-            // Will connect to API later
-        });
-
-        // Quick action buttons
-        document.getElementById('viewTasksBtn').addEventListener('click', function() {
-            alert('View all tasks - feature coming soon!');
-        });
-
-        document.getElementById('viewCalendarBtn').addEventListener('click', function() {
-            alert('Full calendar view - feature coming soon!');
-        });
-
-        document.getElementById('viewCategoriesBtn').addEventListener('click', function() {
-            alert('Manage categories - feature coming soon!');
-        });
-
-        // Calendar navigation
-        document.getElementById('prevMonth').addEventListener('click', function() {
-            alert('Previous month - feature coming soon!');
-        });
-
-        document.getElementById('nextMonth').addEventListener('click', function() {
-            alert('Next month - feature coming soon!');
-        });
-    }
-</script>
+<!-- Scripts -->
+<script src="/js/api.js"></script>
+<script src="/js/dashboard.js"></script>
 
 </body>
 </html>
