@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Collection;
 interface CategoryRepositoryInterface
 {
     /**
-     * Get all categories
+     * Get all categories for a specific user
      */
-    public function all(): Collection;
+    public function all(int $userId): Collection;
 
     /**
      * Find category by ID

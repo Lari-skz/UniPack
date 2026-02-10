@@ -8,48 +8,43 @@ use Illuminate\Database\Eloquent\Collection;
 
 class CategoryRepository implements CategoryRepositoryInterface
 {
-    /**
-     * Inject the Category model through constructor
-     * (Dependency Injection)
-     */
-    public function __construct(
-        protected Category $model
-    ) {}
-
-    public function all(): Collection
+    public function all(int $userId): Collection
     {
-        return $this->model->all();
+        return Category::where('user_id', $userId)
+                       ->with('tasks')
+                       ->get();
     }
 
     public function find(int $id): ?Category
     {
-        return $this->model->find($id);
+        return Category::with('tasks')->find($id);
     }
 
     public function create(array $data): Category
     {
-        return $this->model->create($data);
+        // Ensure user_id is set
+        if (!isset($data['user_id'])) {
+            throw new \Exception('User ID is required');
+        }
+
+        return Category::create($data);
     }
 
     public function update(int $id, array $data): bool
     {
-        $record = $this->model->find($id);
-
-        if (!$record) {
-            return false;
+        $category = Category::find($id);
+        if ($category) {
+            return $category->update($data);
         }
-
-        return $record->update($data);
+        return false;
     }
 
     public function delete(int $id): bool
     {
-        $record = $this->model->find($id);
-
-        if (!$record) {
-            return false;
+        $category = Category::find($id);
+        if ($category) {
+            return $category->delete();
         }
-
-        return $record->delete();
+        return false;
     }
 }
