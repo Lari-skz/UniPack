@@ -119,6 +119,7 @@ database/
 │   ├── create\_tasks\_table.php
 
 │   └── create\_events\_table.php
+...
 
 
 

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Task extends Model
 {
     /**
-     * Define which fields can be mass assigned
+     * Defining which fields can be mass assigned
      */
     protected $fillable = [
         'user_id',
@@ -21,7 +21,7 @@ class Task extends Model
     ];
 
     /**
-     * Define how attributes should be cast
+     * Defining how attributes should be cast
      */
     protected $casts = [
         'due_date' => 'date', // Converts to Carbon date object

@@ -99,10 +99,6 @@ function initializeSignUp() {
         try {
             const response = await AuthAPI.register(name, email, password, passwordConfirmation);
 
-            // Nu mai salvăm token-ul - utilizatorul trebuie să se logheze manual
-            // setAuthToken(response.data.token);
-            // setUserData(response.data.user);
-
             showSuccess('Account created successfully! Please login.');
 
             setTimeout(() => {

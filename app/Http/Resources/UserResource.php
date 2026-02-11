@@ -13,7 +13,7 @@ class UserResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
-            'is_admin' => $this->is_admin,  // ← ADAUGĂ ASTA!
+            'is_admin' => $this->is_admin,
             'created_at' => $this->created_at->format('Y-m-d H:i:s'),
         ];
     }

@@ -13,7 +13,7 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
-     * Define which fields can be mass assigned
+     * Defining which fields can be mass assigned
      */
 protected $fillable = [
     'name',
@@ -24,7 +24,7 @@ protected $fillable = [
 
 
     /**
-     * Hide these fields when converting to JSON
+     * Hiding these fields when converting to JSON
      * (Security: never expose password or tokens in API responses)
      */
     protected $hidden = [
@@ -33,7 +33,7 @@ protected $fillable = [
     ];
 
     /**
-     * Define how attributes should be cast
+     * Defining how attributes should be cast
      */
 
 protected $casts = [

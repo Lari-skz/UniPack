@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Event extends Model
 {
     /**
-     * Define which fields can be mass assigned
+     * Defining which fields can be mass assigned
      */
     protected $fillable = [
         'user_id',
@@ -20,7 +20,7 @@ class Event extends Model
     ];
 
     /**
-     * Define how attributes should be cast
+     * Defining how attributes should be cast
      */
     protected $casts = [
         'event_date' => 'date',
